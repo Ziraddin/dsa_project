@@ -1,15 +1,27 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+typedef struct elector{
+  char name[100];
+  long cin_num;
+  int choice;
+  struct elector* next;
+} elector;
 
-struct elector {
-    char *name;
-    long cin_num;
-    int choice;
-    struct elector *next;
-};
+typedef elector *T_Elector;
 
-typedef struct elector *T_Elector;
+T_Elector creationelector(void){
+    elector *root = (elector*)malloc(sizeof(elector));
+    return root;
+}
 
+void displaylist(T_Elector root){
+    elector* cursor = root;
+    while(cursor->next != NULL){
+        printf("%s\n", cursor->name);
+    }
+}
 
 int main()
 {
